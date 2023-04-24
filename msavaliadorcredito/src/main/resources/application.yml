@@ -1,0 +1,35 @@
+
+spring:
+  application:
+    name: msavaliadorcredito
+  profiles:
+    active: ${PROFILE:local}
+  rabbitmq:
+    host: ${RABBITMQ_SERVER}
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://cursoms-eureka-user:ecok-usr-eeuramssur@${EUREKA_SERVER}:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+mq:
+  queues:
+    emissao-cartoes: emissao-cartoes
+
+managment:
+  endpoints:
+    web:
+      exposure:
+        incliude: '*'
+
+loggin:
+  file:
+    name: ./logs/log-file.log

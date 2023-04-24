@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: mscartoes
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://cursoms-eureka-user:ecok-usr-eeuramssur@localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+mq:
+  queues:
+    emissao-cartoes: emissao-cartoes
+
+managment:
+  endpoints:
+    web:
+      exposure:
+        incliude: '*'
+
+loggin:
+  file:
+    name: ./logs/log-file.log
